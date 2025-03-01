@@ -1,8 +1,6 @@
-
-
 import streamlit as st
 
-def Convert_Length(value, from_Unit, to_Unit):
+def convert_length(value, from_unit, to_unit):
     conversions = {
         'Meter': 1,
         'Kilometer': 0.001,
@@ -13,9 +11,9 @@ def Convert_Length(value, from_Unit, to_Unit):
         'Yard': 1.09361,
         'Mile': 0.000621371
     }
-    return value * conversions[from_Unit] / conversions[to_Unit]
+    return value * conversions[to_unit] / conversions[from_unit]
 
-def Convert_Weight(value, from_Unit, to_Unit):
+def convert_weight(value, from_unit, to_unit):
     conversions = {
         'Kilogram': 1,
         'Gram': 1000,
@@ -23,23 +21,22 @@ def Convert_Weight(value, from_Unit, to_Unit):
         'Pound': 2.20462,
         'Ounce': 35.274
     }
-    return value * conversions[from_Unit] / conversions[to_Unit]
+    return value * conversions[to_unit] / conversions[from_unit]
 
-def Convert_Temperature(value, from_Unit, to_Unit):
-    if from_Unit == 'Celsius' and to_Unit == 'Fahrenheit':
-       return (value * 9/5) + 32
-    elif from_Unit == 'Fahrenheit' and to_Unit == 'Celsius':
+def convert_temperature(value, from_unit, to_unit):
+    if from_unit == 'Celsius' and to_unit == 'Fahrenheit':
+        return (value * 9/5) + 32
+    elif from_unit == 'Fahrenheit' and to_unit == 'Celsius':
         return (value - 32) * 5/9
-    elif from_Unit == 'Celsius' and to_Unit == 'Kelvin':
+    elif from_unit == 'Celsius' and to_unit == 'Kelvin':
         return value + 273.15
-    elif from_Unit == 'Kelvin' and to_Unit == 'Celsius':
+    elif from_unit == 'Kelvin' and to_unit == 'Celsius':
         return value - 273.15
-    elif from_Unit == 'Fahrenheit' and to_Unit == 'Kelvin':
+    elif from_unit == 'Fahrenheit' and to_unit == 'Kelvin':
         return (value - 32) * 5/9 + 273.15
-    elif from_Unit == 'Kelvin' and to_Unit == 'Fahrenheit':
+    elif from_unit == 'Kelvin' and to_unit == 'Fahrenheit':
         return (value - 273.15) * 9/5 + 32
     return value
-
 
 def convert_volume(value, from_unit, to_unit):
     conversions = {
@@ -53,15 +50,14 @@ def convert_volume(value, from_unit, to_unit):
     }
     return value * conversions[to_unit] / conversions[from_unit]
 
-
-def Convert_Time(value, from_Unit, to_Unit):
+def convert_time(value, from_unit, to_unit):
     conversions = {
         'Second': 1,
         'Minute': 1/60,
         'Hour': 1/3600,
         'Day': 1/86400
     }
-    return value * conversions[from_Unit] / conversions[to_Unit]
+    return value * conversions[to_unit] / conversions[from_unit]
 
 def convert_area(value, from_unit, to_unit):
     conversions = {
@@ -90,19 +86,19 @@ unit_type = st.sidebar.radio("Select Conversion Type", [
 
 if unit_type == "📏 Length Converter":
     units = ['Meter', 'Kilometer', 'Centimeter', 'Millimeter', 'Inch', 'Foot', 'Yard', 'Mile']
-    convert_function = Convert_Length
+    convert_function = convert_length
 elif unit_type == "⚖️ Weight Converter":
     units = ['Kilogram', 'Gram', 'Milligram', 'Pound', 'Ounce']
-    convert_function = Convert_Weight
+    convert_function = convert_weight
 elif unit_type == "🌡️ Temperature Converter":
     units = ['Celsius', 'Fahrenheit', 'Kelvin']
-    convert_function = Convert_Temperature
+    convert_function = convert_temperature
 elif unit_type == "💧 Liquid Converter":
     units = ['Liter', 'Milliliter', 'Gallon (US)', 'Gallon (UK)', 'Quart', 'Pint', 'Fluid Ounce']
     convert_function = convert_volume
 elif unit_type == "⏳ Time Converter":
     units = ['Second', 'Minute', 'Hour', 'Day']
-    convert_function = Convert_Time
+    convert_function = convert_time
 elif unit_type == "📐 Area Converter":
     units = ['Square Meter', 'Square Kilometer', 'Square Mile', 'Square Yard', 'Square Foot', 'Acre']
     convert_function = convert_area
@@ -145,9 +141,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+
 st.markdown("---")
 st.markdown("<p style='text-align: center;'>🌍 Made By Moiz Ahmed Shaikh</p>", unsafe_allow_html=True)
-
-
-
-
