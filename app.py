@@ -123,7 +123,7 @@ with col3:
     converted_value = ""
     if st.button("Convert Now 🚀"):
         converted_value = convert_function(value, from_unit, to_unit)
-        st.success(f"🎯 Converted Value: {converted_value:.2f} {to_unit}")
+        st.success(f"🎯 Converted Value: {converted_value:.4f} {to_unit}")
 
 st.markdown("""
     <style>
